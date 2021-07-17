@@ -1,6 +1,6 @@
 export let menuRegular: string[] = [
   "Alle Umfragen anzeigen",
-  "Statistik anzeigen",
+  "Statistiken anzeigen",
   "Anmelden",
   "Registrieren",
 ];
@@ -8,7 +8,7 @@ export let menuRegular: string[] = [
 export let menuAdmin: string[] = [
   "Alle Umfragen anzeigen",
   "Umfrage erstellen",
-  "Statistik anzeigen",
+  "Statistiken anzeigen",
 ];
 
 export let menuQuestionaryList: string[] = [
