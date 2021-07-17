@@ -31,6 +31,25 @@ do {
       break;
     }
     case states.States.MAIN_MENU_ADMIN: {
+      let choice = menu.writeMenu(menu.menuRegular);
+      switch (choice) {
+        case 0: {
+          currentState = states.States.LIST_QUESTIONARIES_MENU;
+          break;
+        }
+        case 1: {
+          currentState = states.States.CREATE_QUESTIONARY_MENU;
+          break;
+        }
+        case 2: {
+          currentState = states.States.LOGIN_MENU;
+          break;
+        }
+        case 3: {
+          currentState = states.States.REGISTER_MENU;
+          break;
+        }
+      }
       break;
     }
     case states.States.LIST_QUESTIONARIES_MENU: {
@@ -58,7 +77,7 @@ do {
       do {
         let username = prompt("Nutzername:");
         let password = prompt("Passwort:");
-        let data = Deno.readTextFileSync("./jsons/data.json");
+        let data = Deno.readTextFileSync("./jsons/logindata.json");
         let obj = JSON.parse(data);
         let usernameEntry = obj.logins.find((e: any) =>
           e.username === username
@@ -92,7 +111,7 @@ do {
           username = "";
         }
         let usernameRegex: RegExp = new RegExp("^[a-zA-Z0-9]+$");
-        let data = Deno.readTextFileSync("./jsons/data.json");
+        let data = Deno.readTextFileSync("./jsons/logindata.json");
         let obj = JSON.parse(data);
         let usernameEntry = obj.logins.find((e: any) =>
           e.username === username
@@ -102,12 +121,14 @@ do {
         ) {
           validation = true;
           let password = prompt("Passwort:");
-          obj.logins.push({username, password});
+          obj.logins.push({ username, password });
           let jsonString = JSON.stringify(obj);
-          Deno.writeTextFileSync("./jsons/data.json", jsonString);
+          Deno.writeTextFileSync("./jsons/logindata.json", jsonString);
           currentState = states.States.MAIN_MENU_REGULAR;
         } else {
-          console.log("Nutzername bereits vergeben oder ungültig (nur alphanumerisch)");
+          console.log(
+            "Nutzername bereits vergeben oder ungültig (nur alphanumerisch)",
+          );
         }
       } while (validation == false);
       break;

@@ -1,21 +1,25 @@
 export let menuRegular: string[] = [
   "Alle Umfragen anzeigen",
-  "Statistiken anzeigen",
+  "Nutzerstatistiken anzeigen",
   "Anmelden",
   "Registrieren",
+  "Programm beenden",
 ];
 
 export let menuAdmin: string[] = [
   "Alle Umfragen anzeigen",
   "Umfrage erstellen",
-  "Statistiken anzeigen",
+  "Nutzerstatistiken anzeigen",
+  "Umfragestatistiken anzeigen",
+  "Programm beenden",
 ];
 
 export let menuQuestionaryList: string[] = [
-  "Hier sind alle Umfragen, mate",
   "Umfrage suchen",
+  "Vorherige Seite",
   "Nächste Seite",
   "Zurück zum Hauptmenü",
+  "Programm beenden",
 ];
 
 export function writeMenu(choices: string[]): number {
