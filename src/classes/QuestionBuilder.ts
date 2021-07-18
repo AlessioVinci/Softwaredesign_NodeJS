@@ -32,9 +32,10 @@ export class QuestionBuilder {
 
   setCustomAnswers(answerTextArray: string[]) {
     const allAnswers: Answer[] = [];
-    for (const answerText in answerTextArray) {
+    for (const answerText of answerTextArray) {
       allAnswers.push(new Answer(answerText));
     }
+    this._answers = allAnswers;
   }
 
   build() {
@@ -46,6 +47,6 @@ export class QuestionBuilder {
   }
 
   get answers() {
-   return this._answers;
+    return this._answers;
   }
 }

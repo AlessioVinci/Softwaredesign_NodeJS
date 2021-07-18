@@ -1,27 +1,19 @@
 import { Question } from "./Question.ts";
 
 export class Questionary {
-  private _id: number;
-  private _title: string;
-  private _questions: Question[];
-  private _startDate: Date;
-  private _endDate: Date;
-  private _creator: string;
+  id: number;
+  title: string;
+  questions: Question[];
+  startDate: Date;
+  endDate: Date;
+  creator: string;
 
   constructor(id: number, title: string, creator: string) {
-    this._id = id;
-    this._title = title;
-    this._questions = [];
-    this._startDate = new Date(Date.now());
-    this._endDate = this._startDate;
-    this._creator = creator;
-  }
-
-  addQuestion(question: Question) {
-    this._questions.push(question);
-  }
-
-  setEndDate(days: number) {
-    this._endDate = new Date(this._startDate.getDate() + (days * 24 * 60 * 60 * 1000));
+    this.id = id;
+    this.title = title;
+    this.questions = [];
+    this.startDate = new Date(Date.now());
+    this.endDate = this.startDate;
+    this.creator = creator;
   }
 }

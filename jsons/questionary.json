@@ -1,0 +1,220 @@
+{
+  "questionaries": [
+    {
+      "id": 1,
+      "title": "Pommesrating",
+      "questions": [
+        {
+          "_title": "Wie gut findest du Pommes?",
+          "_answers": [
+            { "title": "5/5", "timesSelected": 0 },
+            { "title": "4/5", "timesSelected": 0 },
+            { "title": "3/5", "timesSelected": 0 },
+            { "title": "2/5", "timesSelected": 0 },
+            { "title": "1/5", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Wie gut findest du S��kartoffelpommes?",
+          "_answers": [
+            { "title": "5/5", "timesSelected": 0 },
+            { "title": "4/5", "timesSelected": 0 },
+            { "title": "3/5", "timesSelected": 0 },
+            { "title": "2/5", "timesSelected": 0 },
+            { "title": "1/5", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Beste Pommesform?",
+          "_answers": [
+            { "title": "Grobgeschnitte Pommes", "timesSelected": 0 },
+            { "title": "Feingeschnitte Pommes", "timesSelected": 0 },
+            { "title": "Kartoffelspalten", "timesSelected": 0 },
+            { "title": "Wellige Pommes", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Lieblingsdip?",
+          "_answers": [
+            { "title": "Ketchup", "timesSelected": 0 },
+            { "title": "Mayo", "timesSelected": 0 },
+            { "title": "BBQ", "timesSelected": 0 },
+            { "title": "Knoblauchdip", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Sind frittierte Pommes besser als Ofenpommes?",
+          "_answers": [
+            { "title": "Yes", "timesSelected": 0 },
+            { "title": "No", "timesSelected": 0 }
+          ]
+        }
+      ],
+      "startDate": "2021-07-18T17:43:57.594Z",
+      "endDate": "2021-08-18T17:43:57.601Z",
+      "creator": "admin"
+    },
+    {
+      "id": 2,
+      "title": "Chipsrating",
+      "questions": [
+        {
+          "_title": "Wie gut geriffelte Chips?",
+          "_answers": [
+            { "title": "5/5", "timesSelected": 0 },
+            { "title": "4/5", "timesSelected": 0 },
+            { "title": "3/5", "timesSelected": 0 },
+            { "title": "2/5", "timesSelected": 0 },
+            { "title": "1/5", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Wie gut findest Kesselchips?",
+          "_answers": [
+            { "title": "5/5", "timesSelected": 0 },
+            { "title": "4/5", "timesSelected": 0 },
+            { "title": "3/5", "timesSelected": 0 },
+            { "title": "2/5", "timesSelected": 0 },
+            { "title": "1/5", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Beste Chipsmarke?",
+          "_answers": [
+            { "title": "Lays", "timesSelected": 0 },
+            { "title": "Pringles", "timesSelected": 0 },
+            { "title": "Funnyfrisch", "timesSelected": 0 },
+            { "title": "Chipsfrisch", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Beste Gescmackssorte",
+          "_answers": [
+            { "title": "Gesalzen", "timesSelected": 0 },
+            { "title": "Paprika", "timesSelected": 0 },
+            { "title": "Salt & Vinegar", "timesSelected": 0 },
+            { "title": "Ungarisch", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Sind Chips besser als Salzstangen?",
+          "_answers": [
+            { "title": "Yes", "timesSelected": 0 },
+            { "title": "No", "timesSelected": 0 }
+          ]
+        }
+      ],
+      "startDate": "2021-07-18T17:43:57.594Z",
+      "endDate": "2021-08-18T17:43:57.601Z",
+      "creator": "admin"
+    },
+    {
+      "id": 3,
+      "title": "Pommesrating",
+      "questions": [
+        {
+          "_title": "Wie gut findest du Pommes?",
+          "_answers": [
+            { "title": "5/5", "timesSelected": 0 },
+            { "title": "4/5", "timesSelected": 0 },
+            { "title": "3/5", "timesSelected": 0 },
+            { "title": "2/5", "timesSelected": 0 },
+            { "title": "1/5", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Wie gut findest du S��kartoffelpommes?",
+          "_answers": [
+            { "title": "5/5", "timesSelected": 0 },
+            { "title": "4/5", "timesSelected": 0 },
+            { "title": "3/5", "timesSelected": 0 },
+            { "title": "2/5", "timesSelected": 0 },
+            { "title": "1/5", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Beste Pommesform?",
+          "_answers": [
+            { "title": "Grobgeschnitte Pommes", "timesSelected": 0 },
+            { "title": "Feingeschnitte Pommes", "timesSelected": 0 },
+            { "title": "Kartoffelspalten", "timesSelected": 0 },
+            { "title": "Wellige Pommes", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Lieblingsdip?",
+          "_answers": [
+            { "title": "Ketchup", "timesSelected": 0 },
+            { "title": "Mayo", "timesSelected": 0 },
+            { "title": "BBQ", "timesSelected": 0 },
+            { "title": "Knoblauchdip", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Sind frittierte Pommes besser als Ofenpommes?",
+          "_answers": [
+            { "title": "Yes", "timesSelected": 0 },
+            { "title": "No", "timesSelected": 0 }
+          ]
+        }
+      ],
+      "startDate": "2021-07-18T17:43:57.594Z",
+      "endDate": "2021-08-18T17:43:57.601Z",
+      "creator": "peter"
+    },
+    {
+      "id": 4,
+      "title": "Chipsrating",
+      "questions": [
+        {
+          "_title": "Wie gut geriffelte Chips?",
+          "_answers": [
+            { "title": "5/5", "timesSelected": 0 },
+            { "title": "4/5", "timesSelected": 0 },
+            { "title": "3/5", "timesSelected": 0 },
+            { "title": "2/5", "timesSelected": 0 },
+            { "title": "1/5", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Wie gut findest Kesselchips?",
+          "_answers": [
+            { "title": "5/5", "timesSelected": 0 },
+            { "title": "4/5", "timesSelected": 0 },
+            { "title": "3/5", "timesSelected": 0 },
+            { "title": "2/5", "timesSelected": 0 },
+            { "title": "1/5", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Beste Chipsmarke?",
+          "_answers": [
+            { "title": "Lays", "timesSelected": 0 },
+            { "title": "Pringles", "timesSelected": 0 },
+            { "title": "Funnyfrisch", "timesSelected": 0 },
+            { "title": "Chipsfrisch", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Beste Gescmackssorte",
+          "_answers": [
+            { "title": "Gesalzen", "timesSelected": 0 },
+            { "title": "Paprika", "timesSelected": 0 },
+            { "title": "Salt & Vinegar", "timesSelected": 0 },
+            { "title": "Ungarisch", "timesSelected": 0 }
+          ]
+        },
+        {
+          "_title": "Sind Chips besser als Salzstangen?",
+          "_answers": [
+            { "title": "Yes", "timesSelected": 0 },
+            { "title": "No", "timesSelected": 0 }
+          ]
+        }
+      ],
+      "startDate": "2021-07-18T17:43:57.594Z",
+      "endDate": "2021-08-18T17:43:57.601Z",
+      "creator": "peter"
+    }
+  ]
+}

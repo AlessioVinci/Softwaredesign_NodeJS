@@ -1,5 +1,6 @@
 export const menuRegular: string[] = [
   "Alle Umfragen anzeigen",
+  "Umfrage Suchen",
   "Nutzerstatistiken anzeigen",
   "Anmelden",
   "Registrieren",
@@ -8,6 +9,7 @@ export const menuRegular: string[] = [
 
 export const menuAdmin: string[] = [
   "Alle Umfragen anzeigen",
+  "Umfrage Suchen",
   "Umfrage erstellen",
   "Nutzerstatistiken anzeigen",
   "Umfragestatistiken anzeigen",
@@ -15,9 +17,24 @@ export const menuAdmin: string[] = [
 ];
 
 export const menuQuestionaryList: string[] = [
-  "Umfrage suchen",
+  "Umfrage öffnen (ID)",
   "Vorherige Seite",
   "Nächste Seite",
+  "Zurück zum Hauptmenü",
+];
+
+export const menuQuestionarySearch: string[] = [
+  "Neue Umfrage suchen",
+  "Umfrage öffnen",
+  "Zurück zum Hauptmenü",
+];
+
+export const menuUserStats: string[] = [
+  "Zurück zum Hauptmenü",
+];
+
+export const menuQuestionaryStats: string[] = [
+  "Sehe Statistik zu Umfrage mit ID:",
   "Zurück zum Hauptmenü",
 ];
 
