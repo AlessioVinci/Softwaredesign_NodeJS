@@ -1,0 +1,1 @@
+.\deno.exe run --allow-all --unstable  ./src/Main.ts

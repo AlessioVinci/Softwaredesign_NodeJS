@@ -202,13 +202,18 @@ do {
     case States.FILLIN_QUESTIONARY_MENU: {
       console.clear();
       const obj = getJsonAsObject("./jsons/questionary.json");
+      const userObj = getJsonAsObject("./jsons/logindata.json");
       const currentQuestionary: Questionary = obj.questionaries.find((e: any) =>
         e.id === currentQuestionaryKey
       );
       if (
         UserSession.Instance.getFilledQuestionaries().some((e: any) =>
-          e.title === currentQuestionary.title
+          e === currentQuestionary.id
+        ) ||
+        userObj.logins.find((e: any) =>
+          e.username === UserSession.Instance.getUsername()
         )
+          .filledQuestionariesByID.includes(currentQuestionary.id)
       ) {
         console.clear();
         console.log(
@@ -218,7 +223,16 @@ do {
         setMainMenu();
         break;
       }
-      UserSession.Instance.addQuestionary(currentQuestionary);
+      UserSession.Instance.addQuestionary(currentQuestionary.id);
+      if (UserSession.Instance.getUserType() === UserTypes.ADMIN) {
+        const userObj = getJsonAsObject("./jsons/logindata.json");
+        const currentUser = userObj.logins.find((e: any) =>
+          e.username === UserSession.Instance.getUsername()
+        );
+        currentUser.filledQuestionariesByID.push(currentQuestionary.id);
+        const jsonString = JSON.stringify(userObj);
+        Deno.writeTextFileSync("./jsons/logindata.json", jsonString);
+      }
       console.log(currentQuestionary.title);
       for (let question of currentQuestionary.questions) {
         console.log("Frage: " + question.title);
@@ -250,6 +264,9 @@ do {
         Validation.isValidNumber,
       );
 
+      console.log(questionaryDuration);
+      Deno.sleepSync(5000);
+
       const obj = getJsonAsObject("./jsons/questionary.json");
       let questionaryNew = new Questionary(
         obj.questionaries.length + 1,
@@ -258,7 +275,7 @@ do {
       );
       questionaryNew.endDate = new Date(
         questionaryNew.startDate.getTime() +
-          parseInt(questionaryDuration as string),
+          (parseInt(questionaryDuration as string) * 24 * 60 * 60 * 1000),
       );
       const questionsAmount: number = parseInt(
         Validation.validatedPrompt(
@@ -311,8 +328,7 @@ do {
             break;
           }
         }
-        question.build();
-        questionaryNew.questions.push(question);
+        questionaryNew.questions.push(question.build());
       }
       obj.questionaries.push(questionaryNew);
       const jsonString = JSON.stringify(obj);
@@ -323,12 +339,16 @@ do {
     case States.USER_STATS_MENU: {
       console.clear();
       const filledQuestionaries = UserSession.Instance.getFilledQuestionaries();
+      const obj = getJsonAsObject("./jsons/questionary.json");
       console.log(
         "Anzahl der ausgefüllten Umfragen: " + filledQuestionaries.length,
       );
       if (filledQuestionaries.length > 0) {
         console.log("Titel der ausgefüllten Umfragen:");
-        for (let filledSingleQuestionary of filledQuestionaries) {
+        for (const filledSingleQuestionaryID of filledQuestionaries) {
+          const filledSingleQuestionary: Questionary = obj.questionaries.find((
+            e: any,
+          ) => e.id === filledSingleQuestionaryID);
           console.log(filledSingleQuestionary.title);
         }
       }
@@ -448,7 +468,7 @@ do {
         "Passwort: ",
         Validation.isNotEmpty,
       );
-      obj.logins.push({ username, password });
+      obj.logins.push({ username, password, filledQuestionariesByID: [] });
       const jsonString = JSON.stringify(obj);
       Deno.writeTextFileSync("./jsons/logindata.json", jsonString);
       UserSession.Instance.setUserType(UserTypes.REGULAR);

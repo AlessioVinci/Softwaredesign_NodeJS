@@ -5,7 +5,7 @@ export class Question {
   title: string;
   answers: Answer[];
   constructor(questionBuilder: QuestionBuilder) {
-    this.title = questionBuilder.title;
-    this.answers = questionBuilder.answers;
+    this.title = questionBuilder.getTitle;
+    this.answers = questionBuilder.getAnswers;
   }
 }

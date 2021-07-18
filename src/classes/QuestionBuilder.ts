@@ -2,25 +2,25 @@ import { Question } from "./Question.ts";
 import { Answer } from "./Answer.ts";
 
 export class QuestionBuilder {
-  private _title: string;
-  private _answers: Answer[] = [];
+  private title: string;
+  private answers: Answer[] = [];
 
   constructor(title: string) {
-    this._title = title;
+    this.title = title;
   }
 
   setYNAnswers() {
-    this._answers = [new Answer("Yes"), new Answer("No")];
+    this.answers = [new Answer("Yes"), new Answer("No")];
     return this;
   }
 
   setTFAnswers() {
-    this._answers = [new Answer("True"), new Answer("False")];
+    this.answers = [new Answer("True"), new Answer("False")];
     return this;
   }
 
   setRatingAnswers() {
-    this._answers = [
+    this.answers = [
       new Answer("5/5"),
       new Answer("4/5"),
       new Answer("3/5"),
@@ -35,18 +35,18 @@ export class QuestionBuilder {
     for (const answerText of answerTextArray) {
       allAnswers.push(new Answer(answerText));
     }
-    this._answers = allAnswers;
+    this.answers = allAnswers;
   }
 
   build() {
     return new Question(this);
   }
 
-  get title() {
-    return this._title;
+  get getTitle() {
+    return this.title;
   }
 
-  get answers() {
-    return this._answers;
+  get getAnswers() {
+    return this.answers;
   }
 }

@@ -5,12 +5,12 @@ export class UserSession {
   private static _instance: UserSession;
 
   private _userType: UserTypes;
-  private _filledQuestionaries: Questionary[];
+  private _filledQuestionariesByID: number[];
   private _username?: string;
 
   private constructor() {
     this._userType = UserTypes.REGULAR;
-    this._filledQuestionaries = [];
+    this._filledQuestionariesByID = [];
   }
 
   public static get Instance() {
@@ -33,11 +33,11 @@ export class UserSession {
     return this._username;
   }
 
-  addQuestionary(questionary: Questionary) {
-    this._filledQuestionaries.push(questionary);
+  addQuestionary(questionaryID: number) {
+    this._filledQuestionariesByID.push(questionaryID);
   }
 
   getFilledQuestionaries() {
-    return this._filledQuestionaries;
+    return this._filledQuestionariesByID;
   }
 }
