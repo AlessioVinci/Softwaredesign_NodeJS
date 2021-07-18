@@ -2,7 +2,7 @@
 import * as bcrypt from "https://deno.land/x/bcrypt@v0.2.4/mod.ts"; */
 import * as Validation from "./classes/ValidationResult.ts";
 import * as Menu from "./MenuManager.ts";
-import { States } from "./States.ts";
+import { States } from "./classes/States.ts";
 import { UserSession } from "./classes/UserSession.ts";
 import { UserTypes } from "./classes/UserTypes.ts";
 import { Questionary } from "./classes/Questionary.ts";
