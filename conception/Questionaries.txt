@@ -1,0 +1,90 @@
+Mit der Rolle des (unregistrieten) Benutzers und registrtierten Benutzers sind sowohl männliche, weibliche als auch divers Personen gemeint.
+
+Aufgabe Questionaries App:
+
+Um Umfragen besser erstellen zu können und die entsprechenden Statistiken dazu einzusehen soll es eine Applikation dafür geben.
+
+In der Applikation gibt es zwei Rollen, den Benutzer und den Registrierten Benutzer.
+Beim Starten der Applikation gibt es mehrere Möglichkeiten:
+
+- Der aktuelle Benutzer, kann bestehende Umfragen anhand des Titels einsehen und diese ausfüllen, es werden immer nur 10 Umfragen gleichzeitig angezeigt.
+- Der aktuelle Benutzer, kann nach bestehenden Umfragen anhand des Titels suchen und diese dann ausfüllen.
+--- Sobald der Benutzer eine Umfrage abgeschlossen hat, ist diese für den aktuellen Benutzer gesperrt.
+- Der aktuelle Benutzer, kann die Anzahl der bereits ausgefüllten Umfragen und die Titel der ausgefüllten Umfragen in seiner Statistik sehen.
+- Der aktuelle Benutzer, kann sich Anmelden mit Benutzername und Passwort.
+- Der aktuelle Benutzer, kann sich registrieren.
+--- Falls der Benutzer, bereits registriert ist anhand des Benutzernamen, soll es nicht möglich sein, sich nochmals mit dem gleichen Benutzernamen registieren zu können.
+
+Mit dem Schließen und Wiederöffnen beginnt eine neue Sitzung, das bedeutet der Benutzer aus der letzten Sitzung ist nicht gleich mit dem Benutzer der aktuellen Sitzung.
+
+Bei der Registrierung ist es erforderlich einen Benutzernamen (alphanumerisch, keine Sonderzeichen) und ein Passwort anzugeben.
+Registrierte Benutzer werden dann entsprechend persistiert.
+Nochmals: Ein bereits registrtierten Benutzer kann sich nicht nochmals Registrieren.
+
+Mit dem Benutzernamen und Passwort kann sich ein registrierter Benutzer anmelden.
+Entsprechende Sicherheitsvorkehrungen, dass das Passwort nicht sichtbar ist, usw... sind nicht erforderlich, aber gewünscht. Stichwort hierbei: bspw. Hashing Sha256
+
+Der registierte / angemeldete Benutzer hat folgende Möglichkeiten in der Applikation:
+- Dieser kann eine Umfrage erstellen.
+- Dieser kann die Statistik zu einer seiner Umfragen einsehen.
+--- Welche Benutzer an seiner Umfrage teilgenommen haben, darf nicht ersichtlich sein.
+- Dieser kann an einer bestehenden Umfrage teilnehmen, jedoch nicht an seinen eigenen.
+--- Der registierte Benutzer kann nur einmal an einer Umfrage teilnehmen, wie der unregistriete Benutzer.
+--- Der registierte Benutzer hat die gleichen Möglichkeiten eine Umfrage auszuwählen, wie der unregistriete Benutzer.
+- Dieser kann seine Statistik zu ausgefüllten Umfragen sehen, analog zu dem des unregistrieten Benutzers.
+
+Eine Umfrage hat immer einen Titel.
+Eine Umfrage hat einen Gültigkeitsbereich, Datum von / bis, bspw. 18.06.2021 - 18.07.2021.
+Eine Umfrage besteht mindestens aus mindestens 5 Fragen, die maximale Anzahl an Fragen ist unbegrenzt.
+Um eine bessere Auswertung gewährleisten zu können, sollen Fragen lediglich aus mehreren Auswahlmöglichkeiten, diese sind von 2 - 10 zu beschränken bestehen, z.B.:
+
+Wie alt sind Sie?
+1. <= 18 Jahre
+2. 19 - 35 Jahre
+3. 36 - 55 Jahre
+4. 56 - 70 Jahre
+5. >= 71 Jahre
+
+Wie zufrieden sind Sie mit dem Kurs "SoftwareDesign":
+
+1. gar nicht zufrieden
+2. überhaupt nicht zufrieden
+3. ganz und gar nicht zufrieden
+4. die Frage ist unnötig, weil der Kurs unnötig war
+5. war super, nur der Dozent ist halt ne Handlampe
+
+Sind Sie glücklich mit Ihrem Leben?
+
+1. Ja
+2. Nein
+
+Der registrierte Benutzer hat nach jeder erstellten Frage, die Möglichkeit die Umfrage fertigzustellen, insofern die Mindestanzahl an Fragen erreicht ist.
+Die entsprechende Umfrage steht lediglich für den Gültigkeitsbereich zur Beantwortung für alle Benutzer zur Verfügung.
+Ist der Gültigkeitsbereich noch nicht erreicht oder bereits überstritten ist diese Umfrage für die Bearbeitung gesperrt.
+Diese gesperrten Umfragen sollen allerdings in der Übersicht angezeigt werden, allerdings nicht auswählbar sein.
+Nach gesperrten Umfragen soll ebenfalls gesucht werden können, diese allerdings nicht auswählbar sein.
+Der Grund, wieso eine Umfrage gesperrt ist, soll ersichtlich sein, bspw.: 
+- SoftwareDesign Kursumfrage (gesperrt, Enddatum: 18.06.2021) 
+- Fernsehverhalten (gesperrt, Startdatum: 25.06.2021)
+
+Der registierte Benutzer hat die Möglichkeit die Statistik zu seinen Umfragen einzusehen.
+Allerdings erst wenn schon die erste komplette Beantwortung aller Fragen erfüllt ist.
+
+Wenn eine Umfrage noch nie beantwortet wurde, soll keine Statistik dazu angezeigt werden.
+Bei der Übersicht der Umfragen soll ebenfalls zum Titel angezeigt werden, wie viele Male die Umfrage schon beantwortet wurde.
+
+Innerhalb der Statistik soll es dann für die einzelnen Frage ersichtlich sein, welche Antworte wie viele Male ausgewählt wurde, hier ein paar Beispiele:
+
+Wie alt sind Sie?
+1. <= 18 Jahre    (1)
+2. 19 - 35 Jahre  (6)
+3. 36 - 55 Jahre  (20)
+4. 56 - 70 Jahre  (10)
+5. >= 71 Jahre    (0)
+
+Sind Sie glücklich mit Ihrem Leben?
+
+1. Ja     |----------|       | (60 %)
+2. Nein   |-------|          | (40 %)
+
+Hierbei ist natürlich eure Kreativität gefragt.
