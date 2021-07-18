@@ -1,60 +1,85 @@
 /* //@ts-ignore
 import * as bcrypt from "https://deno.land/x/bcrypt@v0.2.4/mod.ts"; */
-import * as states from "./States.ts";
-import * as menu from "./MenuManager.ts";
-import * as content from "./ContentManager.ts";
+import { States } from "./States.ts";
+import * as Menu from "./MenuManager.ts";
+import * as Content from "./ContentManager.ts";
+import { UserSession } from "./classes/UserSession.ts";
+import { UserTypes } from "./classes/UserTypes.ts";
+import { Questionary } from "./classes/Questionary.ts";
+import * as Validation from "./classes/ValidationResult.ts";
 
-let currentState = states.States.MAIN_MENU_REGULAR;
+let currentState = States.MAIN_MENU_REGULAR;
+UserSession.Instance;
 do {
   switch (+currentState) {
-    case states.States.MAIN_MENU_REGULAR: {
-      content.writeContent(content.menuRegular);
-      let choice = menu.writeMenu(menu.menuRegular);
+    case States.MAIN_MENU_REGULAR: {
+      console.clear();
+      Content.writeContent(Content.menuMain);
+      const choice = Menu.writeMenu(Menu.menuRegular);
       switch (choice) {
         case 0: {
-          currentState = states.States.LIST_QUESTIONARIES_MENU;
+          currentState = States.LIST_QUESTIONARIES_MENU;
           break;
         }
         case 1: {
-          console.log("ich zeig dir alle Umfragen an");
+          currentState = States.USER_STATS_MENU;
           break;
         }
         case 2: {
-          currentState = states.States.LOGIN_MENU;
+          currentState = States.LOGIN_MENU;
           break;
         }
         case 3: {
-          currentState = states.States.REGISTER_MENU;
+          currentState = States.REGISTER_MENU;
+          break;
+        }
+        case 4: {
+          currentState = States.QUIT_APPLICATION;
+          break;
+        }
+        default: {
+          currentState = States.QUIT_APPLICATION;
           break;
         }
       }
       break;
     }
-    case states.States.MAIN_MENU_ADMIN: {
-      let choice = menu.writeMenu(menu.menuRegular);
+    case States.MAIN_MENU_ADMIN: {
+      console.clear();
+      Content.writeContent(Content.menuMain);
+      const choice = Menu.writeMenu(Menu.menuAdmin);
       switch (choice) {
         case 0: {
-          currentState = states.States.LIST_QUESTIONARIES_MENU;
+          currentState = States.LIST_QUESTIONARIES_MENU;
           break;
         }
         case 1: {
-          currentState = states.States.CREATE_QUESTIONARY_MENU;
+          currentState = States.CREATE_QUESTIONARY_MENU;
           break;
         }
         case 2: {
-          currentState = states.States.LOGIN_MENU;
+          currentState = States.USER_STATS_MENU;
           break;
         }
         case 3: {
-          currentState = states.States.REGISTER_MENU;
+          currentState = States.QUESTIONARY_STATS_MENU;
+          break;
+        }
+        case 4: {
+          currentState = States.QUIT_APPLICATION;
+          break;
+        }
+        default: {
+          currentState = States.QUIT_APPLICATION;
           break;
         }
       }
       break;
     }
-    case states.States.LIST_QUESTIONARIES_MENU: {
-      content.writeContent(content.menuQuestionaryList);
-      let choice = menu.writeMenu(menu.menuQuestionaryList);
+    case States.LIST_QUESTIONARIES_MENU: {
+      console.clear();
+      Content.writeContent(Content.menuQuestionaryList);
+      const choice = Menu.writeMenu(Menu.menuQuestionaryList);
       switch (choice) {
         case 0: {
           break;
@@ -66,25 +91,39 @@ do {
           break;
         }
         case 3: {
-          currentState = states.States.MAIN_MENU_REGULAR;
+          setMainMenu();
+          break;
+        }
+        default: {
+          setMainMenu();
           break;
         }
       }
       break;
     }
-    case states.States.LOGIN_MENU: {
-      let maxTries: number = 3;
+    case States.CREATE_QUESTIONARY_MENU: {
+      console.clear();
+      const questionaryTitle: string | null = prompt("Titel der Umfrage:");
+      if (questionaryTitle != null) {
+      }
+      break;
+    }
+    case States.LOGIN_MENU: {
+      let maxTries = 3;
       do {
-        let username = prompt("Nutzername:");
-        let password = prompt("Passwort:");
-        let data = Deno.readTextFileSync("./jsons/logindata.json");
-        let obj = JSON.parse(data);
-        let usernameEntry = obj.logins.find((e: any) =>
+        console.clear();
+        const username = prompt("Nutzername:");
+        const password = prompt("Passwort:");
+        const data = Deno.readTextFileSync("./jsons/logindata.json");
+        const obj = JSON.parse(data);
+        const usernameEntry = obj.logins.find((e: any) =>
           e.username === username
         );
         if (usernameEntry != undefined) {
           if (usernameEntry.password === password) {
-            currentState = states.States.MAIN_MENU_ADMIN;
+            UserSession.Instance.setUserType(UserTypes.ADMIN);
+            UserSession.Instance.setUsername(usernameEntry.username);
+            setMainMenu();
             break;
           } else {
             console.log("Falsches Passwort");
@@ -99,39 +138,43 @@ do {
           "Zu viele Versuche \n Weiterleitung zum Hauptmenu... Bitte warten",
         );
         Deno.sleepSync(3000);
-        currentState = states.States.MAIN_MENU_REGULAR;
+        UserSession.Instance.setUserType(UserTypes.REGULAR);
+        setMainMenu();
       }
       break;
     }
-    case states.States.REGISTER_MENU: {
-      let validation: boolean = false;
-      do {
-        let username: string | null = prompt("Nutzername:");
-        if (username === null) {
-          username = "";
-        }
-        let usernameRegex: RegExp = new RegExp("^[a-zA-Z0-9]+$");
-        let data = Deno.readTextFileSync("./jsons/logindata.json");
-        let obj = JSON.parse(data);
-        let usernameEntry = obj.logins.find((e: any) =>
-          e.username === username
-        );
-        if (
-          usernameEntry == undefined && usernameRegex.test(username) == true
-        ) {
-          validation = true;
-          let password = prompt("Passwort:");
-          obj.logins.push({ username, password });
-          let jsonString = JSON.stringify(obj);
-          Deno.writeTextFileSync("./jsons/logindata.json", jsonString);
-          currentState = states.States.MAIN_MENU_REGULAR;
-        } else {
-          console.log(
-            "Nutzername bereits vergeben oder ungültig (nur alphanumerisch)",
-          );
-        }
-      } while (validation == false);
+    case States.REGISTER_MENU: {
+      console.clear();
+
+      const data = Deno.readTextFileSync("./jsons/logindata.json");
+      const obj = JSON.parse(data);
+      const username: string | null = Validation.validatedPrompt(
+        "Nutzername:",
+        Validation.isValidRegisterUsername,
+        obj,
+        3,
+      );
+
+      const password = Validation.validatedPrompt("Passwort: ", Validation.isNotEmpty);
+      obj.logins.push({ username, password });
+      const jsonString = JSON.stringify(obj);
+      Deno.writeTextFileSync("./jsons/logindata.json", jsonString);
+      UserSession.Instance.setUserType(UserTypes.REGULAR);
+      setMainMenu();
+
+      break;
+    }
+    default: {
+      setMainMenu();
       break;
     }
   }
-} while (+currentState != states.States.QUIT_APPLICATION);
+} while (+currentState != States.QUIT_APPLICATION);
+
+function setMainMenu(): void {
+  if (UserSession.Instance.getUserType() === UserTypes.ADMIN) {
+    currentState = States.MAIN_MENU_ADMIN;
+  } else {
+    currentState = States.MAIN_MENU_REGULAR;
+  }
+}

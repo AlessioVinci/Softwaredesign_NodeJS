@@ -1,4 +1,4 @@
-export let menuRegular: string[] = [
+export const menuRegular: string[] = [
   "Alle Umfragen anzeigen",
   "Nutzerstatistiken anzeigen",
   "Anmelden",
@@ -6,7 +6,7 @@ export let menuRegular: string[] = [
   "Programm beenden",
 ];
 
-export let menuAdmin: string[] = [
+export const menuAdmin: string[] = [
   "Alle Umfragen anzeigen",
   "Umfrage erstellen",
   "Nutzerstatistiken anzeigen",
@@ -14,18 +14,17 @@ export let menuAdmin: string[] = [
   "Programm beenden",
 ];
 
-export let menuQuestionaryList: string[] = [
+export const menuQuestionaryList: string[] = [
   "Umfrage suchen",
   "Vorherige Seite",
   "Nächste Seite",
   "Zurück zum Hauptmenü",
-  "Programm beenden",
 ];
 
 export function writeMenu(choices: string[]): number {
-  let idx: number = -1;
+  let idx = -1;
   let input: string | null = "";
-  let error: boolean = false;
+  let error = false;
   do {
     if (error) {
       console.log(`invalid input "${input}". Please try again. \n`);

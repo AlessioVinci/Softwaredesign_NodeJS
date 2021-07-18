@@ -1,9 +1,9 @@
-export let menuRegular: string[] = [
+export const menuMain: string[] = [
   "Willkommen bei Questionare!",
   "Optionen:",
 ];
 
-export let menuQuestionaryList: string[] = [
+export const menuQuestionaryList: string[] = [
   "Momentane Umfragen",
   "Welcher Lol-Champion bist du?",
   "Bewertung - Hochschule Furtwangen",
@@ -11,7 +11,6 @@ export let menuQuestionaryList: string[] = [
 ];
 
 export function writeContent(content: string[]): void {
-  console.clear();
   for (let i = 0; i < content.length; i++) {
     console.log(`${content[i]}`);
   }
